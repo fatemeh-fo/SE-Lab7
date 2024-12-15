@@ -77,3 +77,22 @@ public class SymbolTableMemoryFacade {
     }
 }
 ```
+
+## Seperate Query from Modifier
+برای اعمال این بازآرایی تابع getTemp() در Memory را که هم عمل Modification انجام میداد و هم مقدار قبلی را باز میگرداند به دو تابع getTempIndex() و addTempIndex() تغییر میدهیم و هر جا از آن استفاده شده بود، با توابه جدید بروزرسانی میکنیم.
+
+```java
+public class Memory {
+    // other stuff
+
+    public int getTempIndex() {
+        return lastTempIndex;
+    }
+
+    public void addTempIndex() {
+        lastTempIndex += tempSize;
+    }
+
+    // more other stuff
+}
+```
