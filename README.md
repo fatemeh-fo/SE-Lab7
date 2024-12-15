@@ -297,6 +297,18 @@ public List<Rule> getRules() {
    - Collapse Hierarchy: اگر کلاس بخشی از یک سلسله مراتب ارث‌بری باشد و عملکرد خاصی نداشته باشد، آن را با کلاس والد ادغام می‌کنیم.
 - سوال ۳.۳. در شرایطی که کلاس ممکن است در آینده توسعه یابد و وظایف بیشتری به آن اضافه شود یا در طراحی فعلی نقش ساختاری خاصی دارد (مانند کلاس‌های فریم‌ورک‌ها که هنوز نیاز به تکامل دارند)، می‌توان Lazy Class را موقتاً نادیده گرفت.
 
+### سوال ۴
+1. استفاده از عبارات سوییچ بجای مفاهیمی مانند Polyumorphism [Link](https://github.com/bigsheykh/Convert_UML_to_ANSI_C/blob/51b0fa79d4797d2a9afc3f27e0f57984b537431a/src/com/project/phase2CodeGeneration/Phase2CodeFileManipulator.java#L451)
+2. کد و متغیر‌های. بلااستفاده و به اصطلاح مرده مثلا [Link](https://github.com/bigsheykh/Convert_UML_to_ANSI_C/blob/51b0fa79d4797d2a9afc3f27e0f57984b537431a/src/com/project/classBaseUML/ClassMethod.java#L31)
+3. کد تکراری در [Link1](https://github.com/bigsheykh/Convert_UML_to_ANSI_C/blob/51b0fa79d4797d2a9afc3f27e0f57984b537431a/src/com/project/classBaseUML/ClassConstructor.java#L89) و [Link2](https://github.com/bigsheykh/Convert_UML_to_ANSI_C/blob/51b0fa79d4797d2a9afc3f27e0f57984b537431a/src/com/project/classBaseUML/ClassMethod.java#L124). این قسمت را میتوان با یک تابع extractAttributes جایگزین کرد.
+4. Primitive Obsession در بعضی جاها مانند [Link](https://github.com/bigsheykh/Convert_UML_to_ANSI_C/blob/51b0fa79d4797d2a9afc3f27e0f57984b537431a/src/com/project/classBaseUML/ClassMethod.java#L166) خوانایی کد را خیلی کاهش داده و اگر مقدار بازگردانده شده‌ی این تابع بصورت کلاس تعریف میشد خواناتر و قابل. تغییر خواهد بود.
+5. کلاس بزرگ یا Data: [Link](https://github.com/bigsheykh/Convert_UML_to_ANSI_C/blob/master/src/com/project/lexicalAnalyzer/CLanguageTokens.java). این کلاس میتواند توسط Enum جایگزین شود.
+6. استفاده از کامنت برای توضیح کد ناخوانا [Link](https://github.com/bigsheykh/Convert_UML_to_ANSI_C/blob/51b0fa79d4797d2a9afc3f27e0f57984b537431a/src/com/project/diagramGUI/GUIList.java#L96)
+7. Refused Bequest در [Link](https://github.com/bigsheykh/Convert_UML_to_ANSI_C/blob/51b0fa79d4797d2a9afc3f27e0f57984b537431a/src/com/project/classBaseUML/ClassDiagram.java#L95)
+8. توابع و کلاس‌های طولانی
+9. تغییرات واگرا یا Divergent Change
+10. Shotgun Surgery
+
 ### سوال ۵
 پلاگین formatter ابزاری است که کد ما را بر اساس قواعد و استانداردهای مشخصی قالب‌بندی می‌کند. این ابزار به‌طور خودکار فاصله‌ها، تورفتگی‌ها، محل قرارگیری پرانتزها و سایر عناصر ساختاری کد را تنظیم می‌کند.
 
