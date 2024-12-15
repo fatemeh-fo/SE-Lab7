@@ -13,11 +13,11 @@ import java.util.Map;
 public class SymbolTable {
     private Map<String, Klass> klasses;
     private Map<String, Address> keyWords;
-    private Memory mem;
+    private SymbolTableMemoryFacade mem;
     private SymbolType lastType;
 
     public SymbolTable(Memory memory) {
-        mem = memory;
+        mem = new SymbolTableMemoryFacade(memory);
         klasses = new HashMap<>();
         keyWords = new HashMap<>();
         keyWords.put("true", new Address(1, varType.Bool, TypeAddress.Imidiate));
