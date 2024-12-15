@@ -249,3 +249,7 @@ public List<Rule> getRules() {
 +     semanticAction = 0;
 + }
 ```
+
+## افرودن formatter
+در قسمت plugins در فایل pom.xml پلاگگین‌‌ها را می‌افزاییم. حال هربار دستور mvn install را اجرا میکنیم این فایل با توجه به فایل eclipse-java-google-style.xml مرتب بودن فایل‌هایمان را بررسی میکند. اگر مقدار goal را format ثرار دهیم عمل formatting را هم انجام میدهد.
+![alt text](formatter_screenshot.png)
