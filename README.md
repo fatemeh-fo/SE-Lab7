@@ -233,3 +233,19 @@ public List<Rule> getRules() {
     return Collections.unmodifiableList(this.rules);
 }
 ```
+
+## Additional Refactoring 2: Replace Exception with Test
+این تکنیک به این صورت است که برای افزایش خوانایی کد بجای استفاده از try/catch برای مقداردهی یک متغیر یا برگرداندن یک مقدار خاص، از if استفاده کنیم. ما برای این تکنیک، try/catch موجود در کلاس Rule را که عدد را از رشته استخراج میکند به ضکل زیر تبدیل کردیم.
+```diff
+- try {
+-     semanticAction = Integer.parseInt(stringRule.substring(index + 1));
+- } catch (NumberFormatException ex) {
+-     semanticAction = 0;
+- }
++ String actionPart = stringRule.substring(index + 1);
++ if (actionPart.matches("\\d+")) {
++     semanticAction = Integer.parseInt(actionPart);
++ } else {
++     semanticAction = 0;
++ }
+```

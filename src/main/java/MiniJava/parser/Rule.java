@@ -12,9 +12,10 @@ public class Rule {
     public Rule(String stringRule) {
         int index = stringRule.indexOf("#");
         if (index != -1) {
-            try {
-                semanticAction = Integer.parseInt(stringRule.substring(index + 1));
-            } catch (NumberFormatException ex) {
+            String actionPart = stringRule.substring(index + 1);
+            if (actionPart.matches("\\d+")) {
+                semanticAction = Integer.parseInt(actionPart);
+            } else {
                 semanticAction = 0;
             }
             stringRule = stringRule.substring(0, index);
