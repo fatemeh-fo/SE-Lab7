@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 import MiniJava.Log.Log;
@@ -26,10 +28,10 @@ public class Parser {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        rules = new ArrayList<Rule>();
+        clearRules();
         try {
             for (String stringRule : Files.readAllLines(Paths.get("src/main/resources/Rules"))) {
-                rules.add(new Rule(stringRule));
+                addRule(new Rule(stringRule));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -57,7 +59,7 @@ public class Parser {
 
                         break;
                     case reduce:
-                        Rule rule = rules.get(currentAction.number);
+                        Rule rule = getRules().get(currentAction.number);
                         for (int i = 0; i < rule.RHS.size(); i++) {
                             parsStack.pop();
                         }
@@ -98,5 +100,21 @@ public class Parser {
             }
         }
         if (!ErrorHandler.hasError) cg.printMemory();
+    }
+
+    public void clearRules() {
+        this.rules = new ArrayList<Rule>();
+    }
+
+    public void addRule(Rule rule) {
+        this.rules.add(rule);
+    }
+
+    public void removeRule(Rule rule) {
+        this.rules.remove(rule);
+    }
+
+    public List<Rule> getRules() {
+        return Collections.unmodifiableList(this.rules);
     }
 }

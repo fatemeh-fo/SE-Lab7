@@ -213,3 +213,23 @@ public class Memory {
     }
 }
 ```
+
+## Additional Refactoring 1: Encapsulate Collection
+این تکنیک بازآرایی بدین معناست که داده-ساختارهای از نوع collection نباید تنها یک getter و setter ساده داشته باشند بلکه getter آنها باید یک کپی immutable برگرداند و همچنین بجای setter از توابع ریزدانه‌ای add و remove استفاده کنیم. ما این تکنیک را برای متغیر rules در کلاس Parser اعمال کردیم. (۴ تابع به این کلاس افزودیم و بجای دسترسی مستقیم به rules و تغییر محتویات آن، از این توابع استفاده کردیم.)
+```java
+public void clearRules() {
+    this.rules = new ArrayList<Rule>();
+}
+
+public void addRule(Rule rule) {
+    this.rules.add(rule);
+}
+
+public void removeRule(Rule rule) {
+    this.rules.remove(rule);
+}
+
+public List<Rule> getRules() {
+    return Collections.unmodifiableList(this.rules);
+}
+```
